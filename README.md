@@ -12,7 +12,7 @@ In this project, three novel unsupervised attentional neural network models for 
 
 ### Environment configuration
 1. Download (if not yet available) a recent version of Python: https://www.python.org/downloads/. We used Python 3.8.6
-2. Download a Python IDE, we suggest using PyCharm as this is the IDE we used inthis project and the following steps to set up the environemnt are speciic to PyCharm: https://www.jetbrains.com/pycharm/download/#section=windows.
+2. Download a Python IDE, we suggest using PyCharm as this is the IDE we used in this project and the following steps to set up the environemnt are speciic to PyCharm: https://www.jetbrains.com/pycharm/download/#section=windows.
 3. Set-up a virtual environment in Pycharm:
     - Click the `Python interpreter selector` on the bottom right 
     - Select `Add Interpreter`
