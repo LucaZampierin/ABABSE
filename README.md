@@ -12,14 +12,14 @@ In this project, three novel unsupervised attentional neural network models for 
 
 ### Environment configuration
 1. Download (if not yet available) a recent version of Python: https://www.python.org/downloads/. We used Python 3.8.6
-2. Download a Python IDE, we suggest using PyCharm as this is the IDE we used in this project and the following steps to set up the environemnt are speciic to PyCharm: https://www.jetbrains.com/pycharm/download/#section=windows.
+2. Download a Python IDE, we suggest using PyCharm as this is the IDE we used in this project and the following steps to set up the environment are specific to PyCharm: https://www.jetbrains.com/pycharm/download/#section=windows.
 3. Set-up a virtual environment in Pycharm:
     - Click the `Python interpreter selector` on the bottom right 
     - Select `Add Interpreter`
     - On the left-hand side of the window that appears, select `Virtual Environment`
     - Then, select the `New Environment` option where you will be asked to choose a file location and the base Python Interpreter (the one you downloaded at step 1.)
-5. Download this software in a zip file and unzip it in the virtual environemnt directory. Conversely, you could also copy all the scripts in the virtual environment.
-6. Activate the virtual environment py running the following line in the PyCharm Terminal: `C:\Users\...\venv\Scripts\activate` , where the dots indicate that you have to specify the directory where you saved your virual environment.
+5. Download this software in a zip file and unzip it in the virtual environment directory. Conversely, you could also copy all the scripts in the virtual environment.
+6. Activate the virtual environment by running the following line in the PyCharm Terminal: `C:\Users\...\venv\Scripts\activate` , where the dots indicate that you have to specify the directory where you saved your virtual environment.
 7. Install the libraries required to use this project by running the following line in the PyCharm Terminal: `pip install -r requirements.txt`
 8. Run the command `python -m download en` in the Terminal in order to isntall the english space language package.
 
