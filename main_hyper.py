@@ -1,6 +1,6 @@
 # Hyperparameter tuning using Tree-structure Parzen Estimator (TPE)
 #
-# https://github.com/LucaZampierin/ABSE
+# https://github.com/LucaZampierin/ABABSE
 #
 # Adapted from Trusca, Wassenberg, Frasincar and Dekker (2020). Changes have been made to adapt the methods
 # to the current project and to adapt the scripts to TensorFlow 2.5.
@@ -12,8 +12,8 @@
 
 
 import tensorflow as tf
-import ABSE1
-import ABSE2
+import ABABSE1
+import ABABSE2
 import lcrModelU
 
 from loadData import *
@@ -40,7 +40,7 @@ eval_num = 0
 best_loss = None
 best_hyperparams = None
 
-abse1space = [
+ababse1space = [
                 hp.choice('learning_rate',[0.001, 0.005, 0.01, 0.02, 0.05, 0.06, 0.07, 0.08, 0.09, 0.1]),
                 hp.quniform('drop_rate', 0, 0.6, 0.05),
                 hp.choice('beta1',    [0.9, 0.92, 0.95, 0.97, 0.99 ]),
@@ -52,7 +52,7 @@ abse1space = [
                 hp.choice('neg_samples',    [ 5, 10, 15, 20 ])
             ]
 
-abse2space = [
+ababse2space = [
                 hp.choice('learning_rate',[0.001, 0.005, 0.01, 0.02, 0.05, 0.06, 0.07, 0.08, 0.09, 0.1]),
                 hp.quniform('drop_rate', 0, 0.6, 0.05),
                 hp.choice('beta1',    [0.9, 0.92, 0.95, 0.97, 0.99 ]),
@@ -77,9 +77,9 @@ lcrunsspace = [
             ]
 
 # Define objectives for hyperopt
-def abse1_objective(hyperparams):
+def ababse1_objective(hyperparams):
     """
-    Method adapted from Trusca et al. (2020). Runs ABSE1 using different hyperparameters.
+    Method adapted from Trusca et al. (2020). Runs ABABSE1 using different hyperparameters.
 
     :param hyperparams: (learning rate, dropout rate, beta1, beta2, L2 regularization, seed regularization,
     orthogonal regularization, batchsize, number of negative samples).
@@ -99,7 +99,7 @@ def abse1_objective(hyperparams):
     sub_vocab = [ vocab_pos, vocab_neu, vocab_neg]
     tf.reset_default_graph()
     min_loss, best_epoch, acc, pred1, att, true, pr, rec, f1, tr_acc, sent_emb, per_class_scores = \
-        ABSE1.main(FLAGS.hyper_train_path, FLAGS.hyper_eval_path, test_size, sub_vocab, learning_rate, drop_rate, beta1,
+        ABABSE1.main(FLAGS.hyper_train_path, FLAGS.hyper_eval_path, test_size, sub_vocab, learning_rate, drop_rate, beta1,
                    beta2, l2, seed_reg, ortho_reg, batchsize, neg_samples)
     tf.reset_default_graph()
 
@@ -117,13 +117,13 @@ def abse1_objective(hyperparams):
             'epoch': best_epoch,
             'accuracy': acc
         }
-    save_json_result('ABSE1' +str(FLAGS.year) +'acc' +str(acc) + 'loss'+ str(min_loss), result)
+    save_json_result('ABABSE1' +str(FLAGS.year) +'acc' +str(acc) + 'loss'+ str(min_loss), result)
     return result
 
 
-def abse2_objective(hyperparams):
+def ababse2_objective(hyperparams):
     """
-    Method adapted from Trusca et al. (2020). Runs ABSE2 using different hyperparameters.
+    Method adapted from Trusca et al. (2020). Runs ABABSE2 using different hyperparameters.
 
     :param hyperparams: (learning rate, dropout rate, beta1, beta2, L2 regularization, seed regularization,
     orthogonal regularization, batchsize, number of negative samples).
@@ -143,7 +143,7 @@ def abse2_objective(hyperparams):
     sub_vocab = [ vocab_pos, vocab_neu, vocab_neg]
     tf.reset_default_graph()
     min_loss, best_epoch, acc, pred1, att, true, pr, rec, f1, tr_acc, sent_emb, per_class_scores = \
-        ABSE2.main(FLAGS.hyper_train_path, FLAGS.hyper_eval_path, test_size, sub_vocab, learning_rate, drop_rate, beta1,
+        ABABSE2.main(FLAGS.hyper_train_path, FLAGS.hyper_eval_path, test_size, sub_vocab, learning_rate, drop_rate, beta1,
                    beta2, l2, seed_reg, ortho_reg, batchsize, neg_samples)
     tf.reset_default_graph()
 
@@ -161,7 +161,7 @@ def abse2_objective(hyperparams):
             'epoch': best_epoch,
             'accuracy': acc
         }
-    save_json_result('ABSE2' +str(FLAGS.year) +'acc' +str(acc) + 'loss'+ str(min_loss), result)
+    save_json_result('ABABSE2' +str(FLAGS.year) +'acc' +str(acc) + 'loss'+ str(min_loss), result)
     return result
 
 
@@ -234,9 +234,9 @@ def run_a_trial():
 
     best = fmin(
         # Insert the method opbjective funtion
-        abse1_objective,
+        ababse1_objective,
         # Define the methods hyperparameter space
-        space     = abse1space,
+        space     = ababse1space,
         algo      = tpe.suggest,
         trials=trials,
         max_evals=max_evals
