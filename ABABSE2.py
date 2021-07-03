@@ -53,17 +53,17 @@ def ababse2(input, sen_len, target, sen_len_tr, aspects, n_aspects, drop_rate1, 
     target = bi_dynamic_rnn_abse(cell, target, FLAGS.n_hidden, sen_len_tr, FLAGS.max_target_len, 'target' + _id, 'all')
     pool_t = reduce_mean_with_len(target, sen_len_tr)
 
-    # Attention layer.
+    # Attention layer
     att = bilinear_attention_layer(hiddens, pool_t, sen_len, FLAGS.n_hidden, l2, FLAGS.random_base, 'tl')
 
-    # Sentence representation.
+    # Sentence representation
     z_s = tf.matmul(att, input)
     z_s = tf.squeeze(z_s, axis=1)
 
-    # Autoencoder-like dimensionalty reduction. Senitment classification.
+    # Autoencoder-like dimensionalty reduction. Senitment classification
     prob, soft_weight = softmax_layer(z_s, FLAGS.n_hidden, FLAGS.random_base, drop_rate2, l2, FLAGS.n_class)
 
-    # Sentence reconstruction.
+    # Sentence reconstruction
     r_s, sent_embedding = decoder_layer(prob, aspects, FLAGS.n_hidden, FLAGS.n_class, n_aspects, FLAGS.random_base, l2,
                                         sub_vocab, FLAGS, use_aspect=True)
     return prob, r_s, z_s, att, sent_embedding
