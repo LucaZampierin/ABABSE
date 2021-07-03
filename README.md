@@ -1,7 +1,7 @@
-# ABSE2
+# ABABSE2
 Code for the bachelor thesis 'An Unsupervised Approach for Aspect-Based Sentiment Analysis Using Attentional Neural Models' by Luca Zampierin (2021). The code is an adaptation of the scripts made available by Truşcǎ, Wassenberg, Frasincar & Dekker (2020). 
 
-In this project, three novel unsupervised attentional neural network models for Aspect-Based Sentiment CLassification (ABSC) are introduced. The first two models, Aspect-Based Sentiment Extraction 1 (ABSE1) and Aspect-Based Sentiment Extraction 2 (ABSE2), are inspired by the work done by He, Lee, Ng, & Dahlmeier (2017). The third model, Unsupervised Left-Center-Right separated neural network with Rotatory attention (Uns-LCR-Rot), is an unsupervised adaptation of the LCR-Rot model proposed by Zheng and Xia (2018). ABSE2 is concluded to be the best performing one.
+In this project, three novel unsupervised attentional neural network models for Aspect-Based Sentiment CLassification (ABSC) are introduced. The first two models, Attention-Based Aspect-Based Sentiment Extraction 1 (ABABSE1) and Attention-Based Aspect-Based Sentiment Extraction 2 (ABABSE2), are inspired by the work done by He, Lee, Ng, & Dahlmeier (2017). The third model, Unsupervised Left-Center-Right separated neural network with Rotatory attention (Uns-LCR-Rot), is an unsupervised adaptation of the LCR-Rot model proposed by Zheng and Xia (2018). ABABSE2 is concluded to be the best performing one.
 
 ## Installation 
 
@@ -24,11 +24,11 @@ In this project, three novel unsupervised attentional neural network models for 
 8. Run the command `python -m download en` in the Terminal in order to isntall the english space language package.
 
 ## Software explanation
-- `main.py`: Script to run the training on the full training set and to test it on the original test set. The user can select the model that he/she wants to run by setting one of the booleans runABSE1, runABSE2, or runLCRROTU to True. Moreover, the user can modify the seed words used for the seed regularization of each model in this file. Run this file by running the line `main.py` in the Terminal.
+- `main.py`: Script to run the training on the full training set and to test it on the original test set. The user can select the model that he/she wants to run by setting one of the booleans runABABSE1, runABABSE2, or runLCRROTU to True. Moreover, the user can modify the seed words used for the seed regularization of each model in this file. Run this file by running the line `main.py` in the Terminal.
 - `main_hyper.py`: Script to run hyperparameter optimization (using the TPE algorithm) given a hyperparameter space that the user can modify. The user can select the model that he/she wants to tune by adjusting the `run_a_trial()` method. Run this file by running the line `main_hyper.py` in the Terminal.
-- `main_cross.py`: Script to run the models but using cross-validation. The user can select the model that he/she wants to run by setting one of the booleans runABSE1, runABSE2, or runLCRROTU to True. Moreover, the user can modify the seed words used for the seed regularization of each model in this file. Run this file by running the line `main_cross.py` in the Terminal.
-- `ABSE1.py`: TensorFlow implementation of the Aspect-Based Sentiment Extraction 1 (ABSE1) model.
-- `ABSE2.py`: TensorFlow implementation of the Aspect-Based Sentiment Extraction 2 (ABSE2) model.
+- `main_cross.py`: Script to run the models but using cross-validation. The user can select the model that he/she wants to run by setting one of the booleans runABABSE1, runABABSE2, or runLCRROTU to True. Moreover, the user can modify the seed words used for the seed regularization of each model in this file. Run this file by running the line `main_cross.py` in the Terminal.
+- `ABABSE1.py`: TensorFlow implementation of the Attention-Based Aspect-Based Sentiment Extraction 1 (ABABSE1) model.
+- `ABABSE2.py`: TensorFlow implementation of the Attention-Based Aspect-Based Sentiment Extraction 2 (ABABSE2) model.
 - `lcrModelU.py`: TensorFlow implementation of the Unsupervised Left-Center-Right separated neural network with Rotatory attention (Uns-LCR-Rot) model.
 - `config.py`: contains different parameters that the user can modify. For example, the user can use this file to change the dataset used by changing the `year` value.
 - `dataReader2016.py`: this file is used to read the original XML files into machine-readable files.
