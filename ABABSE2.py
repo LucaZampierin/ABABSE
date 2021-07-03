@@ -1,9 +1,9 @@
 #!/usr/bin/env python
 # encoding: utf-8
 
-# Aspect-Based Sentiment Extraction 2 (ABSE2).
+# Attention-Based Aspect-Based Sentiment Extraction 2 (ABABSE2).
 #
-# https://github.com/LucaZampierin/ABSE
+# https://github.com/LucaZampierin/ABABSE
 #
 # Adapted from Trusca, Wassenberg, Frasincar and Dekker (2020). Changes have been made to adapt the methods
 # to the current project and to adapt the scripts to TensorFlow 2.5.
@@ -28,9 +28,9 @@ sys.path.append(os.getcwd())
 tf.compat.v1.disable_eager_execution()
 
 
-def abse2(input, sen_len, target, sen_len_tr, aspects, n_aspects, drop_rate1, drop_rate2, sub_vocab, l2, _id='all'):
+def ababse2(input, sen_len, target, sen_len_tr, aspects, n_aspects, drop_rate1, drop_rate2, sub_vocab, l2, _id='all'):
     """
-    Structure of the Aspect-Based Sentiment Extraction 2 (ABSE2) attentional neural network.
+    Structure of the Attention-Based Aspect-Based Sentiment Extraction 2 (ABABSE2) attentional neural network.
     Adapts the strutures in Trusca et al. (2020) to the current project.
 
     :param input:
@@ -46,7 +46,7 @@ def abse2(input, sen_len, target, sen_len_tr, aspects, n_aspects, drop_rate1, dr
     :param _id:
     :return:
     """
-    print('I am ABSE2.')
+    print('I am ABABSE2.')
     cell = tf.compat.v1.nn.rnn_cell.LSTMCell
     input = tf.nn.dropout(input, rate=drop_rate1)
     hiddens = bi_dynamic_rnn_abse(cell, input, FLAGS.n_hidden, sen_len, FLAGS.max_sentence_len, 'l' + _id, 'all')
@@ -73,7 +73,7 @@ def main(train_path, test_path, test_size, sub_vocab, learning_rate=FLAGS.learni
          b1=0.99, b2=0.99, l2=FLAGS.l2_reg, seed_reg=FLAGS.seed_reg, ortho_reg=FLAGS.ortho_reg, batchsize=FLAGS.batch_size,
          nsamples=FLAGS.negative_samples):
     """
-    Runs the ABSE2 method. Method adapted from Trusca et al. (2020) to the current project.
+    Runs the ABABSE2 method. Method adapted from Trusca et al. (2020) to the current project.
 
     :param train_path: path for train data
     :param test_path: path for test data
@@ -115,7 +115,7 @@ def main(train_path, test_path, test_size, sub_vocab, learning_rate=FLAGS.learni
         neg_samples = tf.nn.embedding_lookup(word_embedding, ns_words)
 
         att= None
-        prob, r_s, z_s, att, sent_embedding = abse2(inputs, sen_len, target, tar_len, aspect, FLAGS.n_aspect,
+        prob, r_s, z_s, att, sent_embedding = ababse2(inputs, sen_len, target, tar_len, aspect, FLAGS.n_aspect,
                                                     drop_rate1, drop_rate2, sub_vocab, l2, 'all')
 
         loss = train_loss_func(z_s, r_s, sent_embedding, sub_vocab, neg_samples, seed_reg, ortho_reg, nsamples, neg_sen_len )
