@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # encoding: utf-8
 
-# Attention-Based Aspect-Based Sentiment Extraction 1 (ABSE1).
+# Attention-Based Aspect-Based Sentiment Extraction 1 (ABABSE1).
 #
 # https://github.com/LucaZampierin/ABSE
 #
