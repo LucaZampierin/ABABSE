@@ -63,20 +63,20 @@ def load_word_id_mapping(word_id_file, encoding='utf8'):
     return word_to_id
 
 
-# def index_to_word(w2v_file, index):
-#     """
-#
-#     :param w2v_file:
-#     :param index:
-#     :return:
-#     """
-#     fp = open(w2v_file)
-#     cnt = 0
-#     for line in fp:
-#         line = line.split()
-#         cnt+=1
-#         if cnt==index:
-#             return line[0]
+def index_to_word(w2v_file, index):
+    """
+
+     :param w2v_file:
+     :param index:
+     :return:
+     """
+    fp = open(w2v_file)
+    cnt = 0
+    for line in fp:
+        line = line.split()
+        cnt+=1
+        if cnt==index:
+            return line[0]
 
 def load_w2v(w2v_file, embedding_dim, is_skip=False):
     """
