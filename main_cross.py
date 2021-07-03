@@ -1,6 +1,6 @@
 # Main file to run cross-validation. NOTE: not used in this project
 #
-# https://github.com/LucaZampierin/ABSE
+# https://github.com/LucaZampierin/ABABSE
 #
 # Adapted from Trusca, Wassenberg, Frasincar and Dekker (2020). Changes have been made to adapt the methods
 # to the current project and to adapt the scripts to TensorFlow 2.5.
@@ -11,8 +11,8 @@
 # (Vol.12128, pp. 365–380). Springer
 
 import tensorflow as tf
-import ABSE1
-import ABSE2
+import ABABSE1
+import ABABSE2
 import lcrModelU
 from loadData import *
 
@@ -33,8 +33,8 @@ def main(_):
     :return:
     """
     loadData = False    # Only needed when running the code for the first time for each dataset
-    runABSE1 = False    # Run ABSE1 on the given dataset
-    runABSE2 = True    # Run ABSE2 on the given dataset
+    runABABSE1 = False    # Run ABSE1 on the given dataset
+    runABABSE2 = True    # Run ABSE2 on the given dataset
     runLCRROTU = False   # Run Uns-LCR-Rot on the given dataset
 
     train_path = "data/programGeneratedData/crossValidation" + str(FLAGS.year) + '/cross_train_'
@@ -47,8 +47,8 @@ def main(_):
     train_size, test_size, train_polarity_vector, test_polarity_vector = loadCrossValidation(FLAGS, split_size,
                                                                                              loadData)
 
-    # ABSE1 model
-    if runABSE1 == True:  # CHANGE VALUES THAT ARE RETURNED
+    # ABABSE1 model
+    if runABABSE1 == True: 
         acc = []
         pr = []
         rec = []
@@ -66,7 +66,7 @@ def main(_):
             number_runs = 10
             for i in range(number_runs):
                 _, _, acc_, _, _, _, pr_, rec_, f1_, tr_acc_, _, _ = \
-                    ABSE1.main(train_path, val_path, test_size, sub_vocab)
+                    ABABSE1.main(train_path, val_path, test_size, sub_vocab)
 
                 acc_ = np.reshape(acc_, (-1, 1))
                 pr_ = np.reshape(pr_, (-1, 1))
@@ -105,7 +105,7 @@ def main(_):
             f1.append(average_f1)
             tr_acc.append(average_tr_acc)
 
-        with open("cross_results_" + str(FLAGS.year) + "/ABSE1_" + str(FLAGS.year) + '.txt',
+        with open("cross_results_" + str(FLAGS.year) + "/ABABSE1_" + str(FLAGS.year) + '.txt',
                   'w') as result:
             result.write(str(acc))
             result.write('Test Accuracy: {}, St Dev:{} /n'.format(np.mean(np.asarray(acc)), np.std(np.asarray(acc))))
@@ -116,8 +116,8 @@ def main(_):
             print(str(split_size) + '-fold cross validation results')
             print('Accuracy: {}, St Dev:{}'.format(np.mean(np.asarray(acc)), np.std(np.asarray(acc))))
 
-    # ABSE2 model
-    if runABSE2 == True:  # CHANGE VALUES THAT ARE RETURNED
+    # ABABSE2 model
+    if runABABSE2 == True:  
         acc = []
         pr = []
         rec = []
@@ -135,7 +135,7 @@ def main(_):
             number_runs = 10
             for i in range(number_runs):
                 _, _, acc_, _, _, _, pr_, rec_, f1_, tr_acc_, _, _ = \
-                    ABSE2.main(train_path, val_path, test_size, sub_vocab)
+                    ABABSE2.main(train_path, val_path, test_size, sub_vocab)
 
                 acc_ = np.reshape(acc_, (-1, 1))
                 pr_ = np.reshape(pr_, (-1, 1))
@@ -174,7 +174,7 @@ def main(_):
             f1.append(average_f1)
             tr_acc.append(average_tr_acc)
 
-        with open("cross_results_" + str(FLAGS.year) + "/ABSE2_" + str(FLAGS.year) + '.txt',
+        with open("cross_results_" + str(FLAGS.year) + "/ABABSE2_" + str(FLAGS.year) + '.txt',
                   'w') as result:
             result.write(str(acc))
             result.write(
@@ -188,7 +188,7 @@ def main(_):
             print('Accuracy: {}, St Dev:{}'.format(np.mean(np.asarray(acc)), np.std(np.asarray(acc))))
 
     # Uns-LCR-Rot model
-    if runLCRROTU == True:  # CHANGE VALUES THAT ARE RETURNED
+    if runLCRROTU == True:  
         acc = []
         pr = []
         rec = []
