@@ -1,6 +1,6 @@
 # Main file to run all the models
 #
-# https://github.com/LucaZampierin/ABSE
+# https://github.com/LucaZampierin/ABABSE
 #
 # Adapted from Trusca, Wassenberg, Frasincar and Dekker (2020). Changes have been made to adapt the methods
 # to the current project and to adapt the scripts to TensorFlow 2.5.
@@ -11,8 +11,8 @@
 # (Vol.12128, pp. 365–380). Springer
 
 import tensorflow as tf
-import ABSE1
-import ABSE2
+import ABABSE1
+import ABABSE2
 import lcrModelU
 from loadData import *
 
@@ -35,16 +35,16 @@ def main(_):
     :return:
     """
     loadData = False    # Only needed when running the code for the first time for each dataset
-    runABSE1 = False    # Run ABSE1 on the given dataset
-    runABSE2 = True    # Run ABSE2 on the given dataset
+    runABABSE1 = False    # Run ABABSE1 on the given dataset
+    runABABSE2 = True    # Run ABABSE2 on the given dataset
     runLCRROTU = False   # Run Uns-LCR-Rot on the given dataset
 
     # Retrieve data and wordembeddings
     train_size, test_size, train_polarity_vector, test_polarity_vector = loadDataAndEmbeddings(FLAGS, loadData)
     test = FLAGS.test_path
 
-    # ABSE1 model
-    if runABSE1 == True:   #CHANGE VALUES THAT ARE RETURNED
+    # ABABSE1 model
+    if runABABSE1 == True:   #CHANGE VALUES THAT ARE RETURNED
         vocab_pos = {'amazing': 0, 'great': 1, 'nice': 2, 'impeccable': 3, 'excellent': 4}
         vocab_neg = {'rude': 0, 'bad': 1, 'terrible': 2, 'awful': 3, 'horrible': 4}
         vocab_neu = {'mediocre': 0, 'ordinary': 1, 'decent': 2, 'average': 3, 'ok': 4}
@@ -54,7 +54,7 @@ def main(_):
         number_runs = 10
         for i in range(number_runs):
             min_loss, best_epoch, acc, pred1, att, true, pr, rec, f1, tr_acc, sent_emb, per_class_scores = \
-                ABSE1.main(FLAGS.train_path, test, test_size, sub_vocab)
+                ABABSE1.main(FLAGS.train_path, test, test_size, sub_vocab)
 
             acc = np.reshape(acc, (-1, 1))
             pr = np.reshape(pr, (-1, 1))
@@ -110,25 +110,8 @@ def main(_):
             most_similar_negative = similar_indeces[-(ind + 1), 2]
             print(index_to_word(FLAGS.embedding_path, most_similar_negative))
 
-    # ABSE2 model
-    if runABSE2 == True:
-
-        # ABSE1_2015 = [60.7, 68.6, 70.5, 69.6, 69.2]
-        # ABSE2_2015 = [60.6, 65.0, 67.6, 72.5, 73.8]
-        #
-        # ABSE1_2016 = [75.2, 76.8, 75.6, 74.8, 75.3]
-        # ABSE2_2016 = [75.8, 76.6, 76.2, 77.2, 78.8]
-        #
-        # N = np.arange(1, 6)
-        # plt.style.use("ggplot")
-        # plt.figure()
-        # plt.plot(N, ABSE1_2015, label="ABSE1")
-        # plt.plot(N, ABSE2_2015, label="ABSE2")
-        # plt.title("Out-of-sample accuracy vs seed words")
-        # plt.xlabel("# seed words ")
-        # plt.ylabel("Accuracy")
-        # plt.legend(loc="lower right")
-        # plt.savefig(f"accuracy_vs_seed_2015")
+    # ABABSE2 model
+    if runABABSE2 == True:
 
         vocab_pos = {'amazing': 0, 'great': 1, 'nice': 2, 'impeccable': 3, 'excellent': 4}
         vocab_neg = {'rude': 0, 'bad': 1, 'terrible': 2, 'awful': 3, 'horrible': 4}
@@ -139,7 +122,7 @@ def main(_):
         number_runs = 10
         for i in range(number_runs):
             min_loss, best_epoch, acc, pred1, att, true, pr, rec, f1, tr_acc, sent_emb, per_class_scores = \
-                ABSE2.main(FLAGS.train_path, test, test_size, sub_vocab)
+                ABABSE2.main(FLAGS.train_path, test, test_size, sub_vocab)
 
             acc= np.reshape(acc, (-1, 1))
             pr = np.reshape(pr, (-1, 1))
