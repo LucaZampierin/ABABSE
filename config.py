@@ -3,7 +3,7 @@
 
 # Configuration file.
 #
-# https://github.com/LucaZampierin/ABSE
+# https://github.com/LucaZampierin/ABABSE
 #
 # Adapted to newest version of TensorFlow from Trusca, Wassenberg, Frasincar and Dekker (2020).
 # https://github.com/mtrusca/HAABSA_PLUS_PLUS
