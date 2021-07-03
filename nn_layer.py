@@ -3,7 +3,7 @@
 
 # Neural network layers
 #
-# https://github.com/LucaZampierin/ABSE
+# https://github.com/LucaZampierin/ABABSE
 #
 # Adapted from Trusca, Wassenberg, Frasincar and Dekker (2020). Changes have been made to adapt the methods
 # to the current project and to adapt the scripts to TensorFlow 2.5.
