@@ -1,7 +1,7 @@
 # ABABSE2
 Code for the paper 'An Unsupervised Approach for Aspect-Based Sentiment Classification Using Attentional Neural Models' by Luca Zampierin (2021). The code is an adaptation of the scripts made available by Truşcǎ, Wassenberg, Frasincar & Dekker (2020). 
 
-In this project, three novel unsupervised attentional neural network models for Aspect-Based Sentiment CLassification (ABSC) are introduced. The first two models, Attention-Based Aspect-Based Sentiment Extraction 1 (ABABSE1) and Attention-Based Aspect-Based Sentiment Extraction 2 (ABABSE2), are inspired by the work done by He, Lee, Ng, & Dahlmeier (2017). The third model, Unsupervised Left-Center-Right separated neural network with Rotatory attention (Uns-LCR-Rot), is an unsupervised adaptation of the LCR-Rot model proposed by Zheng and Xia (2018). ABABSE2 is concluded to be the best performing one.
+In this project, two novel unsupervised attentional neural network models for Aspect-Based Sentiment CLassification (ABSC) are introduced. The models, Attention-Based Aspect-Based Sentiment Extraction 1 (ABABSE1) and Attention-Based Aspect-Based Sentiment Extraction 2 (ABABSE2), are inspired by the work done by He, Lee, Ng, & Dahlmeier (2017). ABABSE2 is concluded to be the best performing one.
 
 ## Installation 
 
@@ -40,7 +40,7 @@ In this project, three novel unsupervised attentional neural network models for 
 ## Related Work
 - He, R., Lee, W. S., Ng, H. T., & Dahlmeier, D. (2017). An unsupervised neural attention modelfor aspect extraction. In *Proceedings of the 55th Annual Meeting of the Association for Computational Linguistics (ACL 2017)* (pp. 388–397). ACL.
 - Truşcǎ, M. M., Wassenberg, D., Frasincar, F., & Dekker, R. (2020). A hybrid approach for aspect-based sentiment analysis using deep contextual word embeddings and hierarchical attention. In *20th International Conference on Web Engineering (ICWE 2020)* (Vol.12128, pp. 365–380). Springer.
-- Zheng, S., & Xia, R. (2018). Left-center-right separated neural network for aspect-basedsentiment analysis with rotatory attention. *arXiv preprint arXiv:1802.00892*.
+
 
 
 
