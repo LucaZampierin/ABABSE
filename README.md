@@ -1,5 +1,5 @@
 # ABABSE2
-Code for the paper 'An Unsupervised Approach for Aspect-Based Sentiment Classification Using Attentional Neural Models' by Luca Zampierin (2021). The code is an adaptation of the scripts made available by Truşcǎ, Wassenberg, Frasincar & Dekker (2020). 
+Code for the paper 'An Unsupervised Approach for Aspect-Based Sentiment Classification Using Attentional Neural Models'p. The code is an adaptation of the scripts made available by Truşcǎ, Wassenberg, Frasincar & Dekker (2020). 
 
 In this project, two novel unsupervised attentional neural network models for Aspect-Based Sentiment CLassification (ABSC) are introduced. The models, Attention-Based Aspect-Based Sentiment Extraction 1 (ABABSE1) and Attention-Based Aspect-Based Sentiment Extraction 2 (ABABSE2), are inspired by the work done by He, Lee, Ng, & Dahlmeier (2017). ABABSE2 is concluded to be the best performing one.
 
