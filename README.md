@@ -1,7 +1,7 @@
 # ABABSE2
 Code for the paper 'An Unsupervised Approach for Aspect-Based Sentiment Classification Using Attentional Neural Models'p. The code is an adaptation of the scripts made available by Truşcǎ, Wassenberg, Frasincar & Dekker (2020). 
 
-In this project, two novel unsupervised attentional neural network models for Aspect-Based Sentiment CLassification (ABSC) are introduced. The models, Attention-Based Aspect-Based Sentiment Extraction 1 (ABABSE1) and Attention-Based Aspect-Based Sentiment Extraction 2 (ABABSE2), are inspired by the work done by He, Lee, Ng, & Dahlmeier (2017). ABABSE2 is concluded to be the best performing one.
+In this project, three novel unsupervised attentional neural network models for Aspect-Based Sentiment CLassification (ABSC) are introduced. The models, Attention-Based Aspect-Based Sentiment Extraction 1 (ABABSE1), Attention-Based Aspect-Based Sentiment Extraction 2 (ABABSE2), and Unsupervised Left-Center-Right separated neural network with Rotatory attention (Uns-LCR-Rot) are inspired by the work done by He, Lee, Ng, & Dahlmeier (2017). ABABSE2 is concluded to be the best performing one.
 
 ## Installation 
 
@@ -21,7 +21,7 @@ In this project, two novel unsupervised attentional neural network models for As
 5. Download this software in a zip file and unzip it in the virtual environment directory. Conversely, you could also copy all the scripts in the virtual environment.
 6. Activate the virtual environment by running the following line in the PyCharm Terminal: `C:\Users\...\venv\Scripts\activate` , where the dots indicate that you have to specify the directory where you saved your virtual environment.
 7. Install the libraries required to use this project by running the following line in the PyCharm Terminal: `pip install -r requirements.txt`
-8. Run the command `python -m download en` in the Terminal in order to isntall the english space language package.
+8. Run the command `python -m download en` in the Terminal in order to install the english space language package.
 
 ## Software explanation
 - `main.py`: Script to run the training on the full training set and to test it on the original test set. The user can select the model that he/she wants to run by setting one of the booleans runABABSE1, runABABSE2, or runLCRROTU to True. Moreover, the user can modify the seed words used for the seed regularization of each model in this file. Run this file by running the line `main.py` in the Terminal.
